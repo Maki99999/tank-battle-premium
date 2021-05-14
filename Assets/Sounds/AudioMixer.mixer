@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-8622120588881576648
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 36cbd07345a2c2243b7db6333b9b8750
+  m_EffectName: Echo
+  m_MixLevel: 9a3c1adb4ea083b4398b05057c6aee96
+  m_Parameters:
+  - m_ParameterName: Delay
+    m_GUID: dc7eb6962de494444bbb9afa42237be8
+  - m_ParameterName: Decay
+    m_GUID: 8e60a04a7ab8f38428217d4f5b08b33f
+  - m_ParameterName: Max channels
+    m_GUID: 38cecc55522a5db49926a2125dab27cb
+  - m_ParameterName: Drymix
+    m_GUID: 545992ecf9b217a4d9bf8304d35ab5f6
+  - m_ParameterName: Wetmix
+    m_GUID: f47ba0aa8357c7e4ead56c4b272a9ee4
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-7203360291643334255
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -48,6 +72,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -985373764681038137}
+  - {fileID: -8622120588881576648}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -105,6 +130,8 @@ AudioMixerController:
     name: volBgm
   - guid: 31f52648bed341046bf940c69935c83f
     name: volFx
+  - guid: 6a76861990884b3429f6cc75bbbde6d2
+    name: volManu
   m_AudioMixerGroupViews:
   - guids:
     - 6aacccd8648e0ec4d87f8b1e4d1bf163
@@ -159,7 +186,8 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: b57cf852a892f884b8e82acaa1eaa641
-  m_FloatValues: {}
+  m_FloatValues:
+    6a76861990884b3429f6cc75bbbde6d2: 20
   m_TransitionOverrides: {}
 --- !u!244 &7438425697951403993
 AudioMixerEffectController:
