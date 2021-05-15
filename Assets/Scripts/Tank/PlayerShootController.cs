@@ -23,6 +23,8 @@ public class PlayerShootController : MonoBehaviour, Shootable
 
     void Update()
     {
+        if(PauseManager.Paused)
+            return;
         // Aim
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;

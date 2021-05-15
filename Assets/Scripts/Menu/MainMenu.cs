@@ -40,7 +40,7 @@ public class MainMenu : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        StartCoroutine(LoadScene("MainMenu"));
+        Application.Quit();
     }
 
     public void OpenLevelSelector()
@@ -51,6 +51,16 @@ public class MainMenu : MonoBehaviour
     public void CloseLevelSelector()
     {
         anim.SetBool("OpenLevelSelect", false);
+    }
+
+    public void OpenSettings()
+    {
+        anim.SetBool("OpenSettings", true);
+    }
+
+    public void CloseSettings()
+    {
+        anim.SetBool("OpenSettings", false);
     }
 
     public void StartLevel(int level)

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
-    static BooleanWrapper paused = new BooleanWrapper(false);
-    public static BooleanWrapper isPaused() { return paused; }
+    private static BooleanWrapper _paused = new BooleanWrapper(false);
+    public static BooleanWrapper isPaused() { return _paused; }
+
+    public static bool Paused { get { return _paused.Value; } }
 
     //List<Pausing> pausingObjects;
 
@@ -16,13 +18,13 @@ public class PauseManager : MonoBehaviour
 
     public static void Pause()
     {
-        paused.Value = true;
+        _paused.Value = true;
         Time.timeScale = 0;
     }
 
     public static void Unpause()
     {
         Time.timeScale = 1;
-        paused.Value = false;
+        _paused.Value = false;
     }
 }
