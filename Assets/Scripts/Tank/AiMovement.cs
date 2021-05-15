@@ -36,9 +36,9 @@ public class AiMovement : MonoBehaviour, Shootable
     void Update()
     {
         // Aim
-        if (GlobalThings.instance.player != null)
+        if (GameController.Instance.player != null)
         {
-            Vector3 target = GlobalThings.instance.player.transform.position;
+            Vector3 target = GameController.Instance.player.transform.position;
             target = new Vector3(target.x, upperPart.transform.position.y, target.z);
             upperPart.transform.LookAt(target);
         }
@@ -72,7 +72,7 @@ public class AiMovement : MonoBehaviour, Shootable
     {
         nextBulletTime = Time.time + Random.Range(bulletCooldownRange.x, bulletCooldownRange.y);
         Instantiate(bulletPrefab, bulletSpawnPos.transform.position, bulletSpawnPos.transform.rotation,
-                GlobalThings.instance.temp).GetComponent<Bullet>().source = gameObject;
+                GameController.Instance.temp).GetComponent<Bullet>().SetSource(gameObject, this);
 
     }
 

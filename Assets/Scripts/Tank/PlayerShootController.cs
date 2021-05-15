@@ -46,11 +46,13 @@ public class PlayerShootController : MonoBehaviour, Shootable
 
         currBullets++;
         Instantiate(bulletPrefab, bulletSpawnPos.transform.position, bulletSpawnPos.transform.rotation,
-                GlobalThings.instance.temp).GetComponent<Bullet>().source = gameObject;
+                GameController.Instance.temp).GetComponent<Bullet>().SetSource(gameObject, this);
     }
 
     public void BulletDestroyed()
     {
         currBullets--;
+        if (currBullets < 0)
+            currBullets = 0;
     }
 }

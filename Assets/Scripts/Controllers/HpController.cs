@@ -32,7 +32,7 @@ public class HpController : MonoBehaviour
     void Death()
     {
         if (spawnOnDeath != null)
-            Instantiate(spawnOnDeath, transform.position, transform.rotation, GlobalThings.instance.temp);
+            Instantiate(spawnOnDeath, transform.position, transform.rotation, GameController.Instance.temp);
         Destroy(gameObject);
     }
 }

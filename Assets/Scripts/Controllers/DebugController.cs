@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 
 public class DebugController : MonoBehaviour
@@ -21,5 +22,15 @@ public class DebugController : MonoBehaviour
     public void SetVolumeBGM(float volume)
     {
         audioMixer.SetFloat("volBgm", volume);
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void OpenMenu()
+    {
+        //...
     }
 }
