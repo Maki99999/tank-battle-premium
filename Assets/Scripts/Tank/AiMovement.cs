@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AiMovement : MonoBehaviour, Shootable
+public class AiMovement : Shooter
 {
     public float speed = 21;
     public float rotSpeed = 210;
 
-    public GameObject bulletSpawnPos;
-    public GameObject bulletPrefab;
     public Vector2 bulletCooldownRange;
     public GameObject upperPart;
     public LayerMask rayhitLayer;
@@ -22,8 +20,6 @@ public class AiMovement : MonoBehaviour, Shootable
     public float wanderRange;
 
     private float nextWanderChangeTime = -1;
-
-    //TODO: Shoot und Drive (alles mit cooldowns) umaendern auf Corountines;
 
     void Start()
     {
@@ -46,6 +42,7 @@ public class AiMovement : MonoBehaviour, Shootable
         // Shoot
         if (nextBulletTime < Time.time)
         {
+            nextBulletTime = Time.time + Random.Range(bulletCooldownRange.x, bulletCooldownRange.y);
             Shoot();
         }
 
@@ -67,14 +64,4 @@ public class AiMovement : MonoBehaviour, Shootable
         if (agent.velocity.sqrMagnitude > 0.00f)
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(agent.velocity, Vector3.up), rotSpeed * Time.deltaTime);
     }
-
-    public void Shoot()
-    {
-        nextBulletTime = Time.time + Random.Range(bulletCooldownRange.x, bulletCooldownRange.y);
-        Instantiate(bulletPrefab, bulletSpawnPos.transform.position, bulletSpawnPos.transform.rotation,
-                GameController.Instance.temp).GetComponent<Bullet>().SetSource(gameObject, this);
-
-    }
-
-    public void BulletDestroyed() { }
 }

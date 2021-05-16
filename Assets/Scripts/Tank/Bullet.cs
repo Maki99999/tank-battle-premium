@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : BulletCollection
 {
     public float speed = 40f;
     public float destroyAfter = 60f;
@@ -15,9 +15,6 @@ public class Bullet : MonoBehaviour
     public int bounces = 1;
 
     public LayerMask collisionsLayerMask;
-
-    private GameObject sourceObject;
-    private Shootable sourceScript;
 
     private float killTime;
 
@@ -35,23 +32,14 @@ public class Bullet : MonoBehaviour
             Explode();
     }
 
-    public void SetSource(GameObject sourceObject, Shootable sourceScript)
-    {
-        if (sourceObject == null || sourceScript == null)
-            return;
-
-        this.sourceObject = sourceObject;
-        this.sourceScript = sourceScript;
-    }
-
     void OnCollisionEnter(Collision coll)
     {
-        if (coll.gameObject == sourceObject && Time.time < fireTime + gracePeriodTimeSource)
+        if (sourceScript != null && coll.gameObject == sourceScript.gameObject && Time.time < fireTime + gracePeriodTimeSource)
             return;
 
         if (coll.gameObject.CompareTag("Target"))
         {
-            coll.gameObject.GetComponent<HpController>().ChangeHp(-damage);
+            coll.gameObject.GetComponent<TargetController>().ChangeHp(-damage);
             Explode();
         }
         else
@@ -87,7 +75,6 @@ public class Bullet : MonoBehaviour
 
     void OnDestroy()
     {
-        if (sourceObject != null)
-            sourceScript.BulletDestroyed();
+        BulletDestroyed();
     }
 }

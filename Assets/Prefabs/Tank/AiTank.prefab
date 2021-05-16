@@ -48,10 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e0673e22226724db20cb6ba3012902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpawnPos: {fileID: 3318524551763951505}
+  defaultBulletPrefab: {fileID: 1647181119662533885, guid: 06fe7f04176ecd54c83a3f5926107389, type: 3}
+  specialBulletPrefab: {fileID: 0}
+  specialBulletAmmo: 0
   speed: 15
   rotSpeed: 500
-  bulletSpawnPos: {fileID: 3318524551763951505}
-  bulletPrefab: {fileID: 1647181119662533885, guid: 06fe7f04176ecd54c83a3f5926107389, type: 3}
   bulletCooldownRange: {x: 2, y: 4}
   upperPart: {fileID: 2122350785712798416}
   rayhitLayer:
@@ -96,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 1
   hp: 1
+  type: 2
   spawnOnDeath: {fileID: 5094283256227247354, guid: a3afcaccc40a1ff458b671d03f0fd0f2, type: 3}
   text: {fileID: 5392596929393604202}
 --- !u!65 &7969399105328310819

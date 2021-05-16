@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShootController : MonoBehaviour, Shootable
+public class PlayerShootController : Shooter
 {
-    public GameObject bulletSpawnPos;
-    public GameObject bulletPrefab;
-
     public GameObject upperPart;
     public LayerMask rayhitLayer;
 
@@ -14,7 +11,6 @@ public class PlayerShootController : MonoBehaviour, Shootable
     private float nextBulletTime = -1;
 
     public int maxBullets;
-    private int currBullets;
 
     void Start()
     {
@@ -23,7 +19,7 @@ public class PlayerShootController : MonoBehaviour, Shootable
 
     void Update()
     {
-        if(PauseManager.Paused)
+        if (PauseManager.Paused)
             return;
         // Aim
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -36,25 +32,10 @@ public class PlayerShootController : MonoBehaviour, Shootable
         }
 
         // Shoot
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > nextBulletTime && currBullets < maxBullets)   //TODO: Input
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > nextBulletTime && currBullets < maxBullets)
         {
+            nextBulletTime = Time.time + bulletCooldown;
             Shoot();
         }
-    }
-
-    public void Shoot()
-    {
-        nextBulletTime = Time.time + bulletCooldown;
-
-        currBullets++;
-        Instantiate(bulletPrefab, bulletSpawnPos.transform.position, bulletSpawnPos.transform.rotation,
-                GameController.Instance.temp).GetComponent<Bullet>().SetSource(gameObject, this);
-    }
-
-    public void BulletDestroyed()
-    {
-        currBullets--;
-        if (currBullets < 0)
-            currBullets = 0;
     }
 }
