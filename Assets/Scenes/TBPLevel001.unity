@@ -419,6 +419,11 @@ Transform:
   m_Father: {fileID: 1700265089}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &296854059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7987800578335905016, guid: 1079efe502a841845b708f768d6f7490, type: 3}
+  m_PrefabInstance: {fileID: 7987800579460367747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &391351227
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +450,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391351227}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -720, y: -405, z: 31.2}
+  m_LocalPosition: {x: -1200.3, y: -530.07, z: 31.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1513253118}
@@ -600,7 +605,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -652,9 +657,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 24.32
-      minScalar: 5
+      minMaxState: 3
+      scalar: 30
+      minScalar: 20
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5223,67 +5228,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1001 &432375053
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6620882603765589414, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620882603765589414, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620882603765589414, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620882603765589414, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620882603765589414, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620882603765589414, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620882603765589414, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620882603765589414, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620882603765589414, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620882603765589414, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620882603765589414, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8934031727870003632, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
-      propertyPath: m_Name
-      value: TripleShot
-      objectReference: {fileID: 0}
-    - target: {fileID: 8934031727870003632, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 81b053ef68ab54e4896a3f9af992feab, type: 3}
 --- !u!1 &453207896
 GameObject:
   m_ObjectHideFlags: 0
@@ -6317,6 +6261,8 @@ MonoBehaviour:
   nonManuCanvas: {fileID: 1513253117}
   nonManuText: {fileID: 453207898}
   creepyImageFadeTime: 120
+  objectsToDisable:
+  - {fileID: 296854059}
   everyoneIsManu: 0
 --- !u!4 &1374048564
 Transform:

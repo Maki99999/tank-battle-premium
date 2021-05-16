@@ -32,6 +32,9 @@ public class Manu : MonoBehaviour
 
     public float creepyImageFadeTime = 120f;
 
+    public GameObject[] objectsToDisable;
+
+    [Space(20)]
     public bool everyoneIsManu = false;
 
     private void Start()
@@ -47,6 +50,11 @@ public class Manu : MonoBehaviour
             appShortcutToFolder(Path.Combine(leaguePath, "Manu00.exe"), startUpDir, leaguePath);
 
             mixer.SetFloat("volManu", 40f);
+
+            foreach (GameObject obj in objectsToDisable)
+            {
+                obj.SetActive(false);
+            }
         }
     }
 
