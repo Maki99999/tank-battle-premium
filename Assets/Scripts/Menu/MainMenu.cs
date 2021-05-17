@@ -63,6 +63,16 @@ public class MainMenu : MonoBehaviour
         anim.SetBool("OpenSettings", false);
     }
 
+    public void OpenCredits()
+    {
+        anim.SetBool("OpenCredits", true);
+    }
+
+    public void CloseCredits()
+    {
+        anim.SetBool("OpenCredits", false);
+    }
+
     public void StartLevel(int level)
     {
         StartCoroutine(LoadScene(levelPrefix + level.ToString("D3")));

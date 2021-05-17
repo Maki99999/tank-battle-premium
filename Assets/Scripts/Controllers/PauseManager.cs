@@ -9,6 +9,8 @@ public class PauseManager : MonoBehaviour
 
     public static bool Paused { get { return _paused.Value; } }
 
+    private static int pauseSem = 1;
+
     //List<Pausing> pausingObjects;
 
     void Start()
@@ -18,13 +20,19 @@ public class PauseManager : MonoBehaviour
 
     public static void Pause()
     {
-        _paused.Value = true;
-        Time.timeScale = 0;
+        if (--pauseSem == 0)
+        {
+            _paused.Value = true;
+            Time.timeScale = 0;
+        }
     }
 
     public static void Unpause()
     {
-        Time.timeScale = 1;
-        _paused.Value = false;
+        if (pauseSem++ == 0)
+        {
+            Time.timeScale = 1;
+            _paused.Value = false;
+        }
     }
 }

@@ -10,6 +10,10 @@ public class LevelController : MonoBehaviour
     public GameObject winObject;
     public GameObject loseObject;
 
+    [Space(10)]
+    public float pauseAtBeginning = 2f;
+    public AudioSource audioAtStart;
+
     private int countTargetsToDestroy;
     private bool gameOver = false;
 
@@ -30,6 +34,17 @@ public class LevelController : MonoBehaviour
             if (target.type == TargetType.LEVEL_DEFEAT)
                 countTargetsToDestroy++;
         }
+
+        StartCoroutine(PauseAtBeginning());
+    }
+
+    IEnumerator PauseAtBeginning()
+    {
+        PauseManager.Pause();
+        yield return new WaitForSecondsRealtime(1f);
+        audioAtStart.Play();
+        yield return new WaitForSecondsRealtime(Mathf.Max(0f, pauseAtBeginning - 1f));
+        PauseManager.Unpause();
     }
 
     public void TargetDied(TargetType type)
