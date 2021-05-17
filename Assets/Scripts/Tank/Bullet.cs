@@ -13,6 +13,7 @@ public class Bullet : BulletCollection
     public GameObject spawnOnHit;
     public float damage = 10f;
     public int bounces = 1;
+    private bool justBounced = false;
 
     public LayerMask collisionsLayerMask;
 
@@ -34,6 +35,13 @@ public class Bullet : BulletCollection
 
     void OnCollisionEnter(Collision coll)
     {
+        justBounced = true;
+        Collision(coll);
+    }
+
+    void Collision(Collision coll)
+    {
+
         if (sourceScript != null && coll.gameObject == sourceScript.gameObject && Time.time < fireTime + gracePeriodTimeSource)
             return;
 
@@ -44,26 +52,67 @@ public class Bullet : BulletCollection
         }
         else
         {
-            if (bounces <= 0)
+            if (bounces-- <= 0)
                 Explode();
             else
             {
-                bounces--;
+                Vector3 oldForward = transform.forward;
+                Debug.DrawRay(transform.position, transform.forward, Color.red, 1f);
 
-                if (coll.contacts[0].normal.x == 0f && coll.contacts[0].normal.z == 0f)
+                Vector3 normal = coll.contacts[0].normal;
+                if (normal.x == 0f && normal.z == 0f)
                 {
-                    RaycastHit hit;
-                    if (Physics.Raycast(transform.position - transform.forward * 1f, transform.forward * 2f, out hit, 2f, collisionsLayerMask))
-                        transform.rotation = Quaternion.LookRotation(Vector3.Reflect(transform.forward, hit.normal));
-                    else
-                        Debug.LogError("OnCollisionEnter fired, but there is no collision?");
+                    normal = GetHitNormalFromRaycast(transform.position - transform.forward * 2f, transform.forward, 3f);
                 }
-                else
+                transform.rotation = Quaternion.LookRotation(Vector3.Reflect(transform.forward, normal));
+
+                if (oldForward == transform.forward)
                 {
-                    transform.rotation = Quaternion.LookRotation(Vector3.Reflect(transform.forward, coll.contacts[0].normal));
+                    normal = GetHitNormalFromRaycast(transform.position + transform.right * 0.35f - transform.forward * 2f, transform.forward, 3f);
+                    if (normal != Vector3.zero)
+                        transform.rotation = Quaternion.LookRotation(Vector3.Reflect(transform.forward, normal));
+
+                    if (oldForward == transform.forward)
+                    {
+                        normal = GetHitNormalFromRaycast(transform.position - transform.right * 0.35f - transform.forward * 2f, transform.forward, 3f);
+                        if (normal != Vector3.zero)
+                            transform.rotation = Quaternion.LookRotation(Vector3.Reflect(transform.forward, normal));
+                    }
                 }
+
+                Debug.DrawRay(transform.position, normal, Color.blue, 1f);
+                Debug.DrawRay(transform.position, transform.forward, Color.green, 1f);
             }
         }
+    }
+
+    Vector3 GetHitNormalFromRaycast(Vector3 position, Vector3 direction, float maxDistance)
+    {
+        Vector3 normal = Vector3.zero;
+
+        Debug.DrawRay(position, direction * maxDistance, Color.gray, 1f);
+        RaycastHit hit;
+        if (Physics.Raycast(position, direction * maxDistance, out hit, maxDistance, collisionsLayerMask))
+        {
+            normal = hit.normal;
+            Debug.DrawRay(transform.position, hit.normal, Color.blue, 1f);
+        }
+
+        return normal;
+    }
+
+    void OnCollisionStay(Collision coll)
+    {
+        if (!justBounced)
+        {
+            justBounced = true;
+            Collision(coll);
+        }
+    }
+
+    void OnCollisionExit(Collision coll)
+    {
+        justBounced = false;
     }
 
     void Explode()

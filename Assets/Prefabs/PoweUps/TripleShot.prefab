@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 2517133960500162335}
   - component: {fileID: 2517133960500162305}
   m_Layer: 0
-  m_Name: BulletPowerUp
+  m_Name: TripleShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
