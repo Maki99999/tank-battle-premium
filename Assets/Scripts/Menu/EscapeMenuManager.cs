@@ -118,7 +118,6 @@ public class EscapeMenuManager : MonoBehaviour
     {
         animator.SetTrigger("FadeOut");
         yield return new WaitForSecondsRealtime(1f);
-        PauseManager.Unpause();
         SceneManager.LoadScene(name);
     }
 

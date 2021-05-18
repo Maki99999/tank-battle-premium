@@ -13,8 +13,9 @@ public class PauseManager : MonoBehaviour
 
     //List<Pausing> pausingObjects;
 
-    void Start()
+    void Awake()
     {
+        pauseSem = 1;
         //pausingObjects = new List<Pausing>();
     }
 
