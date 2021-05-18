@@ -78,11 +78,19 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(LoadScene(levelPrefix + level.ToString("D3")));
     }
 
-    IEnumerator LoadScene(string name)
+    IEnumerator LoadScene(string name, float waitTimeBefore = 0f)
     {
+        yield return new WaitForSecondsRealtime(waitTimeBefore);
         anim.SetTrigger("FadeOut");
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(name);
+        yield return new WaitForSecondsRealtime(1f);
+
+        if (Application.CanStreamedLevelBeLoaded(name))
+            SceneManager.LoadScene(name);
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+            Debug.LogError("Scene not found: " + name);
+        }
     }
 
     void MakeLevelButtons()

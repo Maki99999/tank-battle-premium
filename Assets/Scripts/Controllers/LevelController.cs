@@ -7,6 +7,8 @@ public class LevelController : MonoBehaviour
     private static LevelController _instance;
     public static LevelController Instance { get { return _instance; } }
 
+    public int levelId;
+
     public GameObject winObject;
     public GameObject loseObject;
 
@@ -72,6 +74,7 @@ public class LevelController : MonoBehaviour
     {
         GameOver();
         winObject.SetActive(true);
+        GameController.Instance.NextLevel(levelId);
     }
 
     private void Lose()

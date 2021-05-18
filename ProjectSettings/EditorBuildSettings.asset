@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TBPLevel001.unity
     guid: 45eb734ee206e4643b91c0e6665f1b63
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel002.unity
+    guid: 9558b0b69b52f7e4c9ff86d7d4cead22
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel003.unity
+    guid: d4f969eda089f8c4ab0251bc7ad82e2f
   m_configObjects: {}
