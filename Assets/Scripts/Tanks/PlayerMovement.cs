@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float rotSpeed = 210;
 
     public CharacterController charController;
+    public SmoothSound engineSound;
 
     void Update()
     {
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
         float z = Input.GetAxisRaw("Vertical");
 
         Vector3 movement = new Vector3(x, 0, z).normalized;
+        engineSound.desiredVolume = movement.sqrMagnitude / 3f;
         movement *= speed * Time.deltaTime;
 
         //transform.position += movement;
