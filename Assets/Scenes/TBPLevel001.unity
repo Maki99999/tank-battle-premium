@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 1321932024811054406}
   m_IndirectSpecularColor: {r: 0.28085276, g: 0.36602777, b: 0.49832976, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -5875,6 +5875,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1321932024292689832, guid: 20e114c556b690c4588b278974c18a48, type: 3}
+      propertyPath: m_Name
+      value: Sun
+      objectReference: {fileID: 0}
     - target: {fileID: 1321932025300818234, guid: 20e114c556b690c4588b278974c18a48, type: 3}
       propertyPath: m_Name
       value: GameController
@@ -5933,6 +5937,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20e114c556b690c4588b278974c18a48, type: 3}
+--- !u!108 &1321932024811054406 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1321932024292689834, guid: 20e114c556b690c4588b278974c18a48, type: 3}
+  m_PrefabInstance: {fileID: 1321932024811054405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1912022519022225925
 PrefabInstance:
   m_ObjectHideFlags: 0
