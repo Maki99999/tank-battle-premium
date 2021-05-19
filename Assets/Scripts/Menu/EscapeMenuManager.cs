@@ -243,6 +243,6 @@ public class EscapeMenuManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(LoadScene(SceneManager.GetActiveScene().name));
     }
 }

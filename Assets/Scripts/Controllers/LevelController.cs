@@ -41,6 +41,7 @@ public class LevelController : MonoBehaviour
 
     IEnumerator PauseAtBeginning()
     {
+        PauseManager.ResetPause();
         PauseManager.Pause();
         yield return new WaitForSecondsRealtime(pauseAtBeginning);
         PauseManager.Unpause();

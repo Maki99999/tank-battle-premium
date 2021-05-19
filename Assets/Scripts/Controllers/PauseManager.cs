@@ -11,14 +11,6 @@ public class PauseManager : MonoBehaviour
 
     private static int pauseSem = 1;
 
-    //List<Pausing> pausingObjects;
-
-    void Awake()
-    {
-        pauseSem = 1;
-        //pausingObjects = new List<Pausing>();
-    }
-
     public static void Pause()
     {
         if (--pauseSem == 0)
@@ -35,5 +27,12 @@ public class PauseManager : MonoBehaviour
             Time.timeScale = 1;
             _paused.Value = false;
         }
+    }
+
+    public static void ResetPause()
+    {
+        Time.timeScale = 1;
+        _paused.Value = false;
+        pauseSem = 1;
     }
 }

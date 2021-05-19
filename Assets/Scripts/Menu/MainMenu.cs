@@ -31,6 +31,7 @@ public class MainMenu : MonoBehaviour
         }
 
         MakeLevelButtons();
+        PauseManager.ResetPause();
     }
 
     public void ContinueStart()
@@ -88,8 +89,8 @@ public class MainMenu : MonoBehaviour
             SceneManager.LoadScene(name);
         else
         {
-            SceneManager.LoadScene("MainMenu");
             Debug.LogError("Scene not found: " + name);
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
