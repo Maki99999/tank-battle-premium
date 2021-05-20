@@ -32,7 +32,7 @@ public class PlayerShootController : Shooter
         }
 
         // Shoot
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > nextBulletTime && currBullets < maxBullets)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > nextBulletTime && currBulletsOnScreen < maxBullets)
         {
             nextBulletTime = Time.time + bulletCooldown;
             Shoot();

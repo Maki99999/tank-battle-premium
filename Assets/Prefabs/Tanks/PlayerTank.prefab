@@ -302,10 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b605442e0b18547a372bc464453b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawnPos: {fileID: 7077109514438028175}
+  bulletSpawnPos: {fileID: 7077109514438028174}
   defaultBulletPrefab: {fileID: 1647181119662533885, guid: 06fe7f04176ecd54c83a3f5926107389, type: 3}
-  specialBulletPrefab: {fileID: 0}
-  specialBulletAmmo: 0
   upperPart: {fileID: 5858953520585010894}
   rayhitLayer:
     serializedVersion: 2

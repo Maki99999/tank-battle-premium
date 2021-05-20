@@ -4,31 +4,50 @@ using UnityEngine;
 
 public abstract class Shooter : MonoBehaviour
 {
-    public GameObject bulletSpawnPos;
+    public Transform bulletSpawnPos;
     public GameObject defaultBulletPrefab;
-    public GameObject specialBulletPrefab;
-    public int specialBulletAmmo;
-    protected int currBullets;
+    private BulletInformation defaultBulletInformation;
+
+    protected GameObject currentBulletPrefab;
+    protected BulletInformation currentBulletInformation;
+
+    private int specialBulletAmmo;
+    protected int currBulletsOnScreen;
+
+    protected virtual void Awake()
+    {
+        defaultBulletInformation = defaultBulletPrefab.GetComponent<BulletInformation>();
+        currentBulletInformation = defaultBulletInformation;
+    }
 
     public virtual void Shoot()
     {
-        GameObject bulletPrefab = defaultBulletPrefab;
-        if (specialBulletPrefab != null && specialBulletAmmo > 0)
+        if (specialBulletAmmo <= 0)
         {
-            specialBulletAmmo--;
-            bulletPrefab = specialBulletPrefab;
+            currentBulletPrefab = defaultBulletPrefab;
+            currentBulletInformation = defaultBulletInformation;
         }
+        else
+            specialBulletAmmo--;
 
-        currBullets++;
-        BulletCollection bulletCollection = Instantiate(bulletPrefab, bulletSpawnPos.transform.position,
-                bulletSpawnPos.transform.rotation, GameController.Instance.temp).GetComponent<BulletCollection>();
+        currBulletsOnScreen++;
+        BulletCollection bulletCollection = Instantiate(currentBulletPrefab, bulletSpawnPos.position,
+                bulletSpawnPos.rotation, GameController.Instance.temp).GetComponent<BulletCollection>();
         bulletCollection.SetSource(this);
     }
 
     public virtual void BulletDestroyed()
     {
-        currBullets--;
-        if (currBullets < 0)
-            currBullets = 0;
+        currBulletsOnScreen--;
+        if (currBulletsOnScreen < 0)
+            currBulletsOnScreen = 0;
+    }
+
+    public void LoadSpecialBullet(GameObject specialBulletPrefab, int specialBulletAmmo)
+    {
+        this.specialBulletAmmo = specialBulletAmmo;
+
+        currentBulletPrefab = specialBulletPrefab;
+        currentBulletInformation = currentBulletPrefab.GetComponent<BulletInformation>();
     }
 }

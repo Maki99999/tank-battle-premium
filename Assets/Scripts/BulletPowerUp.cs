@@ -12,8 +12,7 @@ public class BulletPowerUp : MonoBehaviour
         Shooter shooter = other.GetComponent<Shooter>();
         if (shooter != null)
         {
-            shooter.specialBulletPrefab = bulletPrefab;
-            shooter.specialBulletAmmo = ammo;
+            shooter.LoadSpecialBullet(bulletPrefab, ammo);
 
             Destroy(gameObject);
         }

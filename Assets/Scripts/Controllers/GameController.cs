@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     const string levelProgressKey = "LevelProgress";
     const string levelPrefix = "TBPLevel";
 
+    public LayerMask collisionsLayerMask;
+
     public GameObject player;
     public Transform temp;
 

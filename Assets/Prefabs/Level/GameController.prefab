@@ -443,6 +443,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c9ee6ab5d3bb74e8f072b7af3ad97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionsLayerMask:
+    serializedVersion: 2
+    m_Bits: 55
   player: {fileID: 0}
   temp: {fileID: 1321932025525795522}
   fadeAnim: {fileID: 2071452206596042488}

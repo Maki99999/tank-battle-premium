@@ -47,18 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2f8d384d695814395d548e35978c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawnPos: {fileID: 1912022518116491087}
+  bulletSpawnPos: {fileID: 1912022518116491086}
   defaultBulletPrefab: {fileID: 1647181119662533885, guid: 06fe7f04176ecd54c83a3f5926107389, type: 3}
-  specialBulletPrefab: {fileID: 0}
-  specialBulletAmmo: 0
-  aimSpeed: 105
-  rotCheckTime: 0.2
+  aimSpeed: 85
+  minRotationTime: 2
+  raycastCheckTime: 0.1
   upperPart: {fileID: 3022197845861227022}
   bulletCooldownRange: {x: 2, y: 4}
   targetController: {fileID: 3784459814576793701}
-  collisionsLayerMask:
-    serializedVersion: 2
-    m_Bits: 55
 --- !u!114 &3784459814576793701
 MonoBehaviour:
   m_ObjectHideFlags: 0
