@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 1321932024292689835}
   - component: {fileID: 1321932024292689834}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -403,6 +403,8 @@ GameObject:
   - component: {fileID: 1321932025300818372}
   - component: {fileID: 1321932025300818373}
   - component: {fileID: 1321932025300818374}
+  - component: {fileID: 3364014659463017857}
+  - component: {fileID: 4994362350441877022}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -465,6 +467,38 @@ MonoBehaviour:
   winObject: {fileID: 8971782208538379656}
   loseObject: {fileID: 8971782208557253965}
   pauseAtBeginning: 2
+--- !u!95 &3364014659463017857
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321932025300818234}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ddff8c79608825c46b4795ba2440b46a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4994362350441877022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321932025300818234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f3cb613308b744b9bedf3fb9b82e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 8971782207467759753}
 --- !u!1 &1321932025419350991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,6 +1076,11 @@ GameObject:
 --- !u!1 &8971782208557253965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 676324747, guid: 1079efe502a841845b708f768d6f7490, type: 3}
+  m_PrefabInstance: {fileID: 8971782209232330950}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &8971782207467759753 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1765754959, guid: 1079efe502a841845b708f768d6f7490, type: 3}
   m_PrefabInstance: {fileID: 8971782209232330950}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &2071452206596042488 stripped

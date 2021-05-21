@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 673093177699253503}
-  smoothingMultiplier: 8.5
+  smoothingMultiplier: 9.2
   desiredVolume: 0
 --- !u!1 &7077109514438028175
 GameObject:
