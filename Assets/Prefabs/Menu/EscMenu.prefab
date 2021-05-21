@@ -5629,7 +5629,7 @@ MonoBehaviour:
   animator: {fileID: 7388533935864837524}
   blurImage: {fileID: 7525071415623181289}
   blurCamera: {fileID: 0}
-  blurResWidth: 400
+  blurResWidth: 1280
   mainVolSlider: {fileID: 7388533934059259073}
   sfxVolSlider: {fileID: 7388533934960619599}
   musicVolSlider: {fileID: 7388533935009569496}

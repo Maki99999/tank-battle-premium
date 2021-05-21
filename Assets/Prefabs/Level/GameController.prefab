@@ -617,6 +617,7 @@ GameObject:
   - component: {fileID: 1321932025472950404}
   - component: {fileID: 1321932025472950401}
   - component: {fileID: 1321932025472950407}
+  - component: {fileID: 4954769108525364505}
   m_Layer: 0
   m_Name: Blur Camera
   m_TagString: Untagged
@@ -713,6 +714,23 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &4954769108525364505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321932025472950405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: ef417aeb2bf1c51408505b32559556bb, type: 2}
 --- !u!1 &1321932025505730773
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +987,10 @@ PrefabInstance:
       propertyPath: blurCamera
       value: 
       objectReference: {fileID: 1321932025472950401}
+    - target: {fileID: 6934816292216852029, guid: 1079efe502a841845b708f768d6f7490, type: 3}
+      propertyPath: blurResWidth
+      value: 1280
+      objectReference: {fileID: 0}
     - target: {fileID: 7987800578335904771, guid: 1079efe502a841845b708f768d6f7490, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1068,6 +1090,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7987800578335904771, guid: 1079efe502a841845b708f768d6f7490, type: 3}
   m_PrefabInstance: {fileID: 8971782209232330950}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &8971782207467759753 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1765754959, guid: 1079efe502a841845b708f768d6f7490, type: 3}
+  m_PrefabInstance: {fileID: 8971782209232330950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8971782208538379656 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 695199054, guid: 1079efe502a841845b708f768d6f7490, type: 3}
@@ -1076,11 +1103,6 @@ GameObject:
 --- !u!1 &8971782208557253965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 676324747, guid: 1079efe502a841845b708f768d6f7490, type: 3}
-  m_PrefabInstance: {fileID: 8971782209232330950}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &8971782207467759753 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1765754959, guid: 1079efe502a841845b708f768d6f7490, type: 3}
   m_PrefabInstance: {fileID: 8971782209232330950}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &2071452206596042488 stripped
