@@ -7,8 +7,10 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 21;
     public float rotSpeed = 210;
 
-    public CharacterController charController;
+    public new Rigidbody rigidbody;
     public SmoothSound engineSound;
+
+    private Vector3 nextMovement;
 
     void Update()
     {
@@ -16,16 +18,23 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
 
-        Vector3 movement = new Vector3(x, 0, z).normalized;
-        engineSound.desiredVolume = movement.sqrMagnitude / 3f;
-        movement *= speed * Time.deltaTime;
+        nextMovement = new Vector3(x, 0, z).normalized;
+        engineSound.desiredVolume = nextMovement.sqrMagnitude / 3f;
+        nextMovement *= speed;
+    }
 
-        //transform.position += movement;
-        charController.Move(movement);
+    void FixedUpdate()
+    {
+        rigidbody.velocity = nextMovement * speed;
 
-        // Turn
-        if (movement.sqrMagnitude > 0.00f)
-            transform.rotation = Quaternion.RotateTowards(transform.rotation,
-                    Quaternion.LookRotation(movement, Vector3.up), rotSpeed * Time.deltaTime);
+        if (nextMovement.sqrMagnitude > 0.00f)
+        {
+            Vector3 movement = nextMovement;
+            if (Vector3.Angle(transform.forward, movement) > 90 || (Vector3.Angle(transform.forward, movement) == 90 && Random.value > 0.5f))
+                movement = -nextMovement;
+
+            rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation,
+                    Quaternion.LookRotation(movement, Vector3.up), rotSpeed * Time.deltaTime));
+        }
     }
 }
