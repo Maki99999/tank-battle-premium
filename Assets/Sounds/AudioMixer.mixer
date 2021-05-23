@@ -130,8 +130,6 @@ AudioMixerController:
     name: volBgm
   - guid: 31f52648bed341046bf940c69935c83f
     name: volSfx
-  - guid: 6a76861990884b3429f6cc75bbbde6d2
-    name: volManu
   - guid: 0c7b25d0144a0764380f6a1b7dd638fe
     name: volMaster
   m_AudioMixerGroupViews:
@@ -139,7 +137,6 @@ AudioMixerController:
     - 6aacccd8648e0ec4d87f8b1e4d1bf163
     - 0eed3d98c029dc7439806d69b94e6c32
     - 1bea31cf749debe41961ea5b34e72704
-    - 45916fde021263749b3e95a2eb7a1c9f
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -155,7 +152,6 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -3163373007265571636}
   - {fileID: -367839178435628862}
-  - {fileID: -1903429714423187566}
   m_Volume: 0c7b25d0144a0764380f6a1b7dd638fe
   m_Pitch: 58f7f624218c1674db95eeef7ce1a54c
   m_Send: 00000000000000000000000000000000
