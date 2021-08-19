@@ -2,49 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletCollection : MonoBehaviour
+namespace TankBattlePremium
 {
-    protected Shooter sourceScript;
-
-    private int bulletCount = 1;
-
-    private List<BulletCollection> subBulletCollections = new List<BulletCollection>();
-
-    void Start()
+    public class BulletCollection : MonoBehaviour
     {
-        for (int i = 0; i < transform.childCount; i++)
+        protected Shooter sourceScript;
+
+        private int bulletCount = 1;
+
+        private List<BulletCollection> subBulletCollections = new List<BulletCollection>();
+
+        void Start()
         {
-            BulletCollection bulletCollection = transform.GetChild(i).GetComponent<BulletCollection>();
-            if (bulletCollection != null)
+            for (int i = 0; i < transform.childCount; i++)
             {
-                subBulletCollections.Add(bulletCollection);
-                bulletCollection.SetSource(sourceScript);
+                BulletCollection bulletCollection = transform.GetChild(i).GetComponent<BulletCollection>();
+                if (bulletCollection != null)
+                {
+                    subBulletCollections.Add(bulletCollection);
+                    bulletCollection.SetSource(sourceScript);
+                }
             }
+            bulletCount = subBulletCollections.Count;
         }
-        bulletCount = subBulletCollections.Count;
-    }
 
-    public void SetSource(Shooter sourceScript)
-    {
-        if (sourceScript == null)
-            return;
-
-        this.sourceScript = sourceScript;
-
-        foreach (BulletCollection bulletCollection in subBulletCollections)
-            bulletCollection.SetSource(sourceScript);
-    }
-
-    protected void BulletDestroyed()
-    {
-        if (--bulletCount <= 0)
+        public void SetSource(Shooter sourceScript)
         {
-            BulletCollection parentBC = transform.parent.GetComponent<BulletCollection>();
-            if (parentBC != null)
-                parentBC.BulletDestroyed();
-            else if (sourceScript != null && sourceScript.gameObject != null)
-                sourceScript.BulletDestroyed();
-            Destroy(gameObject);
+            if (sourceScript == null)
+                return;
+
+            this.sourceScript = sourceScript;
+
+            foreach (BulletCollection bulletCollection in subBulletCollections)
+                bulletCollection.SetSource(sourceScript);
+        }
+
+        protected void BulletDestroyed()
+        {
+            if (--bulletCount <= 0)
+            {
+                BulletCollection parentBC = transform.parent.GetComponent<BulletCollection>();
+                if (parentBC != null)
+                    parentBC.BulletDestroyed();
+                else if (sourceScript != null && sourceScript.gameObject != null)
+                    sourceScript.BulletDestroyed();
+                Destroy(gameObject);
+            }
         }
     }
 }

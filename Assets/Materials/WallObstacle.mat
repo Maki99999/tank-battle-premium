@@ -8,18 +8,25 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WallObstacle
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: f7137edf0f8fb424393c3a75ada02c2b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_6b89153ad6604ce69afa6b0e1f2bc4f1:
+        m_Texture: {fileID: 2800000, guid: 82f78a045d91e1747b7be3dc0e78956a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_ac6a5ed8daa24467a67861d2abb8e0d7:
+        m_Texture: {fileID: 2800000, guid: 77f5746ea2676d34c9ce1d2baa150aea, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -77,6 +84,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_3b6dc17aeb4548f982ec0001bf26b9f2: 1.22
+    - Vector1_a7cc776b7c7448b3bd1cfe9210cd276a: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -104,6 +113,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Vector2_733c61fce4c14435ab380411d3115126: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - Vector2_b577b1d44c4642d088f0486c49ba8145: {r: 0.2, g: 0.2, b: 1.49, a: 1.35}
     - _BaseColor: {r: 0.8301887, g: 0.7340955, b: 0.41117835, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

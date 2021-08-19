@@ -2,52 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Shooter : MonoBehaviour
+namespace TankBattlePremium
 {
-    public Transform bulletSpawnPos;
-    public GameObject defaultBulletPrefab;
-    private BulletInformation defaultBulletInformation;
-
-    protected GameObject currentBulletPrefab;
-    protected BulletInformation currentBulletInformation;
-
-    private int specialBulletAmmo;
-    protected int currBulletsOnScreen;
-
-    protected virtual void Awake()
+    public abstract class Shooter : MonoBehaviour
     {
-        defaultBulletInformation = defaultBulletPrefab.GetComponent<BulletInformation>();
-        currentBulletInformation = defaultBulletInformation;
-    }
+        public Transform bulletSpawnPos;
+        public GameObject defaultBulletPrefab;
+        private BulletInformation defaultBulletInformation;
 
-    public virtual void Shoot()
-    {
-        if (specialBulletAmmo <= 0)
+        protected GameObject currentBulletPrefab;
+        protected BulletInformation currentBulletInformation;
+
+        private int specialBulletAmmo;
+        protected int currBulletsOnScreen;
+
+        protected virtual void Awake()
         {
-            currentBulletPrefab = defaultBulletPrefab;
+            defaultBulletInformation = defaultBulletPrefab.GetComponent<BulletInformation>();
             currentBulletInformation = defaultBulletInformation;
         }
-        else
-            specialBulletAmmo--;
 
-        currBulletsOnScreen++;
-        BulletCollection bulletCollection = Instantiate(currentBulletPrefab, bulletSpawnPos.position,
-                bulletSpawnPos.rotation, GameController.Instance.temp).GetComponent<BulletCollection>();
-        bulletCollection.SetSource(this);
-    }
+        public virtual void Shoot()
+        {
+            if (specialBulletAmmo <= 0)
+            {
+                currentBulletPrefab = defaultBulletPrefab;
+                currentBulletInformation = defaultBulletInformation;
+            }
+            else
+                specialBulletAmmo--;
 
-    public virtual void BulletDestroyed()
-    {
-        currBulletsOnScreen--;
-        if (currBulletsOnScreen < 0)
-            currBulletsOnScreen = 0;
-    }
+            currBulletsOnScreen++;
+            BulletCollection bulletCollection = Instantiate(currentBulletPrefab, bulletSpawnPos.position,
+                    bulletSpawnPos.rotation, GameController.Instance.temp).GetComponent<BulletCollection>();
+            bulletCollection.SetSource(this);
+        }
 
-    public void LoadSpecialBullet(GameObject specialBulletPrefab, int specialBulletAmmo)
-    {
-        this.specialBulletAmmo = specialBulletAmmo;
+        public virtual void BulletDestroyed()
+        {
+            currBulletsOnScreen--;
+            if (currBulletsOnScreen < 0)
+                currBulletsOnScreen = 0;
+        }
 
-        currentBulletPrefab = specialBulletPrefab;
-        currentBulletInformation = currentBulletPrefab.GetComponent<BulletInformation>();
+        public void LoadSpecialBullet(GameObject specialBulletPrefab, int specialBulletAmmo)
+        {
+            this.specialBulletAmmo = specialBulletAmmo;
+
+            currentBulletPrefab = specialBulletPrefab;
+            currentBulletInformation = currentBulletPrefab.GetComponent<BulletInformation>();
+        }
     }
 }

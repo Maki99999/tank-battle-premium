@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPowerUp : MonoBehaviour
+namespace TankBattlePremium
 {
-    public GameObject bulletPrefab;
-    public int ammo = 1;
-
-    private void OnTriggerEnter(Collider other)
+    public class BulletPowerUp : MonoBehaviour
     {
-        Shooter shooter = other.GetComponent<Shooter>();
-        if (shooter != null)
-        {
-            shooter.LoadSpecialBullet(bulletPrefab, ammo);
+        public GameObject bulletPrefab;
+        public int ammo = 1;
 
-            Destroy(gameObject);
+        private void OnTriggerEnter(Collider other)
+        {
+            Shooter shooter = other.GetComponent<Shooter>();
+            if (shooter != null)
+            {
+                shooter.LoadSpecialBullet(bulletPrefab, ammo);
+
+                Destroy(gameObject);
+            }
         }
     }
 }

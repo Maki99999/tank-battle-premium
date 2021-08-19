@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FixedRotation : MonoBehaviour
+namespace TankBattlePremium
 {
-    Quaternion rotation;
-
-    void Start()
+    public class FixedRotation : MonoBehaviour
     {
-        rotation = transform.rotation;
-    }
+        Quaternion rotation;
 
-    void Update()
-    {
-        transform.rotation = rotation;
+        void Start()
+        {
+            rotation = transform.rotation;
+        }
+
+        void Update()
+        {
+            transform.rotation = rotation;
+        }
     }
 }

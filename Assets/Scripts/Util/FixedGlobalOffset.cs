@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FixedGlobalOffset : MonoBehaviour
+namespace TankBattlePremium
 {
-    private Vector3 offset;
-
-    void Start()
+    public class FixedGlobalOffset : MonoBehaviour
     {
-        offset = transform.localPosition;
-    }
+        private Vector3 offset;
 
-    void Update()
-    {
-        if (transform.parent != null)
-            transform.position = transform.parent.position + offset;
+        void Start()
+        {
+            offset = transform.localPosition;
+        }
+
+        void Update()
+        {
+            if (transform.parent != null)
+                transform.position = transform.parent.position + offset;
+        }
     }
 }

@@ -2,31 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicController : MonoBehaviour
+namespace TankBattlePremium
 {
-    private static MusicController _instance;
-    public static MusicController Instance { get { return _instance; } }
-
-    public AudioSource audioSource;
-
-    void Awake()
+    public class MusicController : MonoBehaviour
     {
-        DontDestroyOnLoad(gameObject);
+        private static MusicController _instance;
+        public static MusicController Instance { get { return _instance; } }
 
-        if (_instance != null && _instance != this)
+        public AudioSource audioSource;
+
+        void Awake()
         {
-            Destroy(this.gameObject);
-            return;
+            DontDestroyOnLoad(gameObject);
+
+            if (_instance != null && _instance != this)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+            else
+                _instance = this;
+
+            audioSource.Play();
         }
-        else
-            _instance = this;
 
-        audioSource.Play();
-    }
-
-    public void ChangeMusic(AudioClip newSong)
-    {
-        audioSource.clip = newSong;
-        audioSource.Play();
+        public void ChangeMusic(AudioClip newSong)
+        {
+            audioSource.clip = newSong;
+            audioSource.Play();
+        }
     }
 }

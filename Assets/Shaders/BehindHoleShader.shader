@@ -55,8 +55,6 @@ Shader "Custom/EarlyLit"
         [HideInInspector] _Cull("__cull", Float) = 2.0
 
         _ReceiveShadows("Receive Shadows", Float) = 1.0
-        // Editmode props
-        [HideInInspector] _QueueOffset("Queue offset", Float) = 0.0
 
         // ObsoleteProperties
         [HideInInspector] _MainTex("BaseMap", 2D) = "white" {}
@@ -75,7 +73,7 @@ Shader "Custom/EarlyLit"
         // Universal Pipeline tag is required. If Universal render pipeline is not set in the graphics settings
         // this Subshader will fail. One can add a subshader below or fallback to Standard built-in to make this
         // material work with both Universal Render Pipeline and Builtin Unity Pipeline
-        Tags{"Queue" = "Geometry-2" "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" "UniversalMaterialType" = "Lit" "IgnoreProjector" = "True" "ShaderModel"="4.5"}
+        Tags{"Queue" = "Geometry-3" "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" "UniversalMaterialType" = "Lit" "IgnoreProjector" = "True" "ShaderModel"="4.5"}
         LOD 300
 
         // ------------------------------------------------------------------
@@ -85,7 +83,7 @@ Shader "Custom/EarlyLit"
             // Lightmode matches the ShaderPassName set in UniversalRenderPipeline.cs. SRPDefaultUnlit and passes with
             // no LightMode tag are also rendered by Universal Render Pipeline
             Name "ForwardLit"
-            Tags{"Queue" = "Geometry-2" "LightMode" = "UniversalForward"}
+            Tags{"Queue" = "Geometry-3" "LightMode" = "UniversalForward"}
 
             Blend[_SrcBlend][_DstBlend]
             ZWrite[_ZWrite]
@@ -144,7 +142,7 @@ Shader "Custom/EarlyLit"
         Pass
         {
             Name "ShadowCaster"
-            Tags{"Queue" = "Geometry-2" "LightMode" = "ShadowCaster"}
+            Tags{"Queue" = "Geometry-3" "LightMode" = "ShadowCaster"}
 
             ZWrite On
             ZTest LEqual
@@ -178,7 +176,7 @@ Shader "Custom/EarlyLit"
             // Lightmode matches the ShaderPassName set in UniversalRenderPipeline.cs. SRPDefaultUnlit and passes with
             // no LightMode tag are also rendered by Universal Render Pipeline
             Name "GBuffer"
-            Tags{"Queue" = "Geometry-2" "LightMode" = "UniversalGBuffer"}
+            Tags{"Queue" = "Geometry-3" "LightMode" = "UniversalGBuffer"}
 
             ZWrite[_ZWrite]
             ZTest LEqual
@@ -236,7 +234,7 @@ Shader "Custom/EarlyLit"
         Pass
         {
             Name "DepthOnly"
-            Tags{"Queue" = "Geometry-2" "LightMode" = "DepthOnly"}
+            Tags{"Queue" = "Geometry-3" "LightMode" = "DepthOnly"}
 
             ZWrite On
             ColorMask 0
@@ -268,7 +266,7 @@ Shader "Custom/EarlyLit"
         Pass
         {
             Name "DepthNormals"
-            Tags{"Queue" = "Geometry-2" "LightMode" = "DepthNormals"}
+            Tags{"Queue" = "Geometry-3" "LightMode" = "DepthNormals"}
 
             ZWrite On
             Cull[_Cull]
@@ -300,7 +298,7 @@ Shader "Custom/EarlyLit"
         Pass
         {
             Name "Meta"
-            Tags{"Queue" = "Geometry-2" "LightMode" = "Meta"}
+            Tags{"Queue" = "Geometry-3" "LightMode" = "Meta"}
 
             Cull Off
 
@@ -328,7 +326,7 @@ Shader "Custom/EarlyLit"
         Pass
         {
             Name "Universal2D"
-            Tags{"Queue" = "Geometry-2" "LightMode" = "Universal2D" }
+            Tags{"Queue" = "Geometry-3" "LightMode" = "Universal2D" }
 
             Blend[_SrcBlend][_DstBlend]
             ZWrite[_ZWrite]
@@ -354,7 +352,7 @@ Shader "Custom/EarlyLit"
         // Universal Pipeline tag is required. If Universal render pipeline is not set in the graphics settings
         // this Subshader will fail. One can add a subshader below or fallback to Standard built-in to make this
         // material work with both Universal Render Pipeline and Builtin Unity Pipeline
-        Tags{"Queue" = "Geometry-2" "Queue" = "Geometry-2" "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" "UniversalMaterialType" = "Lit" "IgnoreProjector" = "True" "ShaderModel"="2.0"}
+        Tags{"Queue" = "Geometry-3" "Queue" = "Geometry-3" "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" "UniversalMaterialType" = "Lit" "IgnoreProjector" = "True" "ShaderModel"="2.0"}
         LOD 300
 
         // ------------------------------------------------------------------
@@ -364,7 +362,7 @@ Shader "Custom/EarlyLit"
             // Lightmode matches the ShaderPassName set in UniversalRenderPipeline.cs. SRPDefaultUnlit and passes with
             // no LightMode tag are also rendered by Universal Render Pipeline
             Name "ForwardLit"
-            Tags{"Queue" = "Geometry-2" "LightMode" = "UniversalForward"}
+            Tags{"Queue" = "Geometry-3" "LightMode" = "UniversalForward"}
 
             Blend[_SrcBlend][_DstBlend]
             ZWrite[_ZWrite]
@@ -423,7 +421,7 @@ Shader "Custom/EarlyLit"
         Pass
         {
             Name "ShadowCaster"
-            Tags{"Queue" = "Geometry-2" "LightMode" = "ShadowCaster"}
+            Tags{"Queue" = "Geometry-3" "LightMode" = "ShadowCaster"}
 
             ZWrite On
             ZTest LEqual
@@ -454,7 +452,7 @@ Shader "Custom/EarlyLit"
         Pass
         {
             Name "DepthOnly"
-            Tags{"Queue" = "Geometry-2" "LightMode" = "DepthOnly"}
+            Tags{"Queue" = "Geometry-3" "LightMode" = "DepthOnly"}
 
             ZWrite On
             ColorMask 0
@@ -485,7 +483,7 @@ Shader "Custom/EarlyLit"
         Pass
         {
             Name "DepthNormals"
-            Tags{"Queue" = "Geometry-2" "LightMode" = "DepthNormals"}
+            Tags{"Queue" = "Geometry-3" "LightMode" = "DepthNormals"}
 
             ZWrite On
             Cull[_Cull]
@@ -516,7 +514,7 @@ Shader "Custom/EarlyLit"
         Pass
         {
             Name "Meta"
-            Tags{"Queue" = "Geometry-2" "LightMode" = "Meta"}
+            Tags{"Queue" = "Geometry-3" "LightMode" = "Meta"}
 
             Cull Off
 
@@ -544,7 +542,7 @@ Shader "Custom/EarlyLit"
         Pass
         {
             Name "Universal2D"
-            Tags{"Queue" = "Geometry-2" "LightMode" = "Universal2D" }
+            Tags{"Queue" = "Geometry-3" "LightMode" = "Universal2D" }
 
             Blend[_SrcBlend][_DstBlend]
             ZWrite[_ZWrite]

@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Credits : MonoBehaviour
+namespace TankBattlePremium
 {
-    public TextMeshProUGUI textElement;
+    public class Credits : MonoBehaviour
+    {
+        public TextMeshProUGUI textElement;
 
-    public TextAsset creditsText;
+        public TextAsset creditsText;
 
-    private void Awake() {
-        textElement.text = creditsText.text;
+        private void Awake()
+        {
+            textElement.text = creditsText.text;
+        }
     }
 }

@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmoothSound : MonoBehaviour
+namespace TankBattlePremium
 {
-    public AudioSource audioSource;
-
-    public float smoothingMultiplier = 1f;
-    public float desiredVolume;
-
-    void Start()
+    public class SmoothSound : MonoBehaviour
     {
-        audioSource.volume = desiredVolume;
-    }
+        public AudioSource audioSource;
 
-    void Update()
-    {
-        audioSource.volume = Mathf.Lerp(audioSource.volume, desiredVolume, Time.deltaTime * smoothingMultiplier);
+        public float smoothingMultiplier = 1f;
+        public float desiredVolume;
+
+        void Start()
+        {
+            audioSource.volume = desiredVolume;
+        }
+
+        void Update()
+        {
+            audioSource.volume = Mathf.Lerp(audioSource.volume, desiredVolume, Time.deltaTime * smoothingMultiplier);
+        }
     }
 }

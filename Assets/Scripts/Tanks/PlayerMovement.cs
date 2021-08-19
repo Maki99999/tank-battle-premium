@@ -2,39 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+namespace TankBattlePremium
 {
-    public float speed = 21;
-    public float rotSpeed = 210;
-
-    public new Rigidbody rigidbody;
-    public SmoothSound engineSound;
-
-    private Vector3 nextMovement;
-
-    void Update()
+    public class PlayerMovement : MonoBehaviour
     {
-        // Move
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
+        public float speed = 21;
+        public float rotSpeed = 210;
 
-        nextMovement = new Vector3(x, 0, z).normalized;
-        engineSound.desiredVolume = nextMovement.sqrMagnitude / 3f;
-        nextMovement *= speed;
-    }
+        public new Rigidbody rigidbody;
+        public SmoothSound engineSound;
 
-    void FixedUpdate()
-    {
-        rigidbody.velocity = nextMovement * speed;
+        private Vector3 nextMovement;
 
-        if (nextMovement.sqrMagnitude > 0.00f)
+        void Update()
         {
-            Vector3 movement = nextMovement;
-            if (Vector3.Angle(transform.forward, movement) > 90 || (Vector3.Angle(transform.forward, movement) == 90 && Random.value > 0.5f))
-                movement = -nextMovement;
+            // Move
+            float x = Input.GetAxisRaw("Horizontal");
+            float z = Input.GetAxisRaw("Vertical");
 
-            rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation,
-                    Quaternion.LookRotation(movement, Vector3.up), rotSpeed * Time.deltaTime));
+            nextMovement = new Vector3(x, 0, z).normalized;
+            engineSound.desiredVolume = nextMovement.sqrMagnitude / 3f;
+            nextMovement *= speed;
+        }
+
+        void FixedUpdate()
+        {
+            rigidbody.velocity = nextMovement * speed;
+
+            if (nextMovement.sqrMagnitude > 0.00f)
+            {
+                Vector3 movement = nextMovement;
+                if (Vector3.Angle(transform.forward, movement) > 90 || (Vector3.Angle(transform.forward, movement) == 90 && Random.value > 0.5f))
+                    movement = -nextMovement;
+
+                rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation,
+                        Quaternion.LookRotation(movement, Vector3.up), rotSpeed * Time.deltaTime));
+            }
         }
     }
 }

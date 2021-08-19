@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillZone : MonoBehaviour
+namespace TankBattlePremium
 {
-    void OnCollisionEnter(Collision other)
+    public class KillZone : MonoBehaviour
     {
-        Destroy(other.gameObject);
-    }
+        void OnCollisionEnter(Collision other)
+        {
+            Destroy(other.gameObject);
+        }
 
-    void OnTriggerEnter(Collider other)
-    {
-        Destroy(other.gameObject);
+        void OnTriggerEnter(Collider other)
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

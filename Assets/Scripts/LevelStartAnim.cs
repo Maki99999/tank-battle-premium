@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelStartAnim : MonoBehaviour
+namespace TankBattlePremium
 {
-    public AudioSource audioSource;
-
-    public void PlaySound()
+    public class LevelStartAnim : MonoBehaviour
     {
-        audioSource.Play();
+        public AudioSource audioSource;
+
+        public void PlaySound()
+        {
+            audioSource.Play();
+        }
     }
 }

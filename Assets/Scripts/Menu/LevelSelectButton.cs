@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelectButton : MonoBehaviour
+namespace TankBattlePremium
 {
-    public int level;
-    public Text text;
-
-    MainMenu menu;
-
-    void Start()
+    public class LevelSelectButton : MonoBehaviour
     {
-        menu = transform.parent.GetComponentInParent<MainMenu>();
-    }
+        public int level;
+        public Text text;
 
-    public void SetLevel(int level)
-    {
-        this.level = level;
-        text.text = "" + level;
-    }
+        MainMenu menu;
 
-    public void StartLevel()
-    {
-        menu.StartLevel(level);
+        void Start()
+        {
+            menu = transform.parent.GetComponentInParent<MainMenu>();
+        }
+
+        public void SetLevel(int level)
+        {
+            this.level = level;
+            text.text = "" + level;
+        }
+
+        public void StartLevel()
+        {
+            menu.StartLevel(level);
+        }
     }
 }

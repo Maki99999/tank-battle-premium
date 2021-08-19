@@ -2,34 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DebugCam : MonoBehaviour
+namespace TankBattlePremium
 {
-    public Camera debugCam;
-    public Camera origCam;
-    public FreeCam freeCam;
-    bool debugCamActive = false;
-
-    void Update()
+    public class DebugCam : MonoBehaviour
     {
-        if (Input.GetKeyDown(KeyCode.T))
-            ToggleCam();
-    }
+        public Camera debugCam;
+        public Camera origCam;
+        public FreeCam freeCam;
+        bool debugCamActive = false;
 
-    void ToggleCam()
-    {
-        debugCamActive = !debugCamActive;
-
-        if (debugCamActive)
+        void Update()
         {
-            debugCam.enabled = true;
-            freeCam.enabled = true;
-            origCam.enabled = false;
+            if (Input.GetKeyDown(KeyCode.T))
+                ToggleCam();
         }
-        else
+
+        void ToggleCam()
         {
-            debugCam.enabled = false;
-            freeCam.enabled = false;
-            origCam.enabled = true;
+            debugCamActive = !debugCamActive;
+
+            if (debugCamActive)
+            {
+                debugCam.enabled = true;
+                freeCam.enabled = true;
+                origCam.enabled = false;
+            }
+            else
+            {
+                debugCam.enabled = false;
+                freeCam.enabled = false;
+                origCam.enabled = true;
+            }
         }
     }
 }
