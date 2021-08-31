@@ -1,4 +1,3 @@
-- tank texture
-- better esc+main menu textures
-- better level select screen
-- more levels
+Level:
+- 1v1 ohne alles, ki eingefroren
+- orig. lvl 1, ki eingefroren
