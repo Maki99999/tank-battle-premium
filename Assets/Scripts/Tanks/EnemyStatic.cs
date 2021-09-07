@@ -18,6 +18,7 @@ namespace TankBattlePremium
 
         public TargetController targetController;
 
+        [SerializeField] private Mode mode = Mode.TURNING;
         private State currState;
 
         protected override void Awake()
@@ -32,8 +33,11 @@ namespace TankBattlePremium
 
         void Update()
         {
+            if (mode == Mode.IDLE)
+                return;
             TestForPlayer();
-            Rotate();
+            if (mode == Mode.TURNING)
+                Rotate();
             MaybeShoot();
         }
 
@@ -76,7 +80,7 @@ namespace TankBattlePremium
                 if (currState == State.NOT_TURNING)
                     currState = Random.value > 0.5 ? State.TURNING_LEFT : State.TURNING_RIGHT;
 
-                if (!currentBulletInformation.HitsTarget(bulletSpawnPos, TargetType.LEVEL_DEFEAT))
+                if (mode == Mode.STATIC || !currentBulletInformation.HitsTarget(bulletSpawnPos, TargetType.LEVEL_DEFEAT))
                 {
                     Shoot();
                 }
@@ -88,6 +92,13 @@ namespace TankBattlePremium
             TURNING_LEFT,
             TURNING_RIGHT,
             NOT_TURNING
+        }
+
+        private enum Mode
+        {
+            TURNING,
+            IDLE,
+            STATIC
         }
     }
 }
