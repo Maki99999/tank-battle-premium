@@ -19,12 +19,16 @@ namespace TankBattlePremium
         public TargetController targetController;
 
         [SerializeField] private Mode mode = Mode.TURNING;
-        private State currState;
+        public State currState { get; private set; }
 
         protected override void Awake()
         {
             base.Awake();
-            nextBulletTime = Time.time + Random.Range(bulletCooldownRange.x, bulletCooldownRange.y);
+        }
+
+        private void OnEnable()
+        {
+            nextBulletTime = Time.time + Random.Range(0f, bulletCooldownRange.y);
             nextRotCheckTime = Time.time;
             nextRaycastTime = Time.time + raycastCheckTime;
 
@@ -35,7 +39,8 @@ namespace TankBattlePremium
         {
             if (mode == Mode.IDLE)
                 return;
-            TestForPlayer();
+            if (mode == Mode.TURNING)
+                TestForPlayer();
             if (mode == Mode.TURNING)
                 Rotate();
             MaybeShoot();
@@ -47,12 +52,14 @@ namespace TankBattlePremium
             {
                 nextRaycastTime = Time.time + raycastCheckTime;
 
-                //Hits player?
-                if (currState != State.NOT_TURNING && currentBulletInformation.HitsTarget(bulletSpawnPos, TargetType.LEVEL_PROTECT))
+                bool hitsTarget = currentBulletInformation.HitsTarget(bulletSpawnPos, TargetType.LEVEL_PROTECT);
+                if (hitsTarget && currState != State.LOCKED_ON)
                 {
-                    currState = State.NOT_TURNING;
+                    currState = State.LOCKED_ON;
                     nextBulletTime = Time.time + 1f;
                 }
+                else if (!hitsTarget && currState == State.LOCKED_ON)
+                    currState = Random.value > 0.5 ? State.TURNING_LEFT : State.TURNING_RIGHT;
             }
         }
 
@@ -61,7 +68,7 @@ namespace TankBattlePremium
             if (nextRotCheckTime < Time.time)
             {
                 nextRotCheckTime = Time.time + minRotationTime;
-                if (currState != State.NOT_TURNING && Random.value > 0.7)
+                if (currState != State.LOCKED_ON && Random.value > 0.7)
                     currState = currState == State.TURNING_LEFT ? currState = State.TURNING_RIGHT : currState = State.TURNING_LEFT;
             }
 
@@ -77,21 +84,16 @@ namespace TankBattlePremium
             {
                 nextBulletTime = Time.time + Random.Range(bulletCooldownRange.x, bulletCooldownRange.y);
 
-                if (currState == State.NOT_TURNING)
-                    currState = Random.value > 0.5 ? State.TURNING_LEFT : State.TURNING_RIGHT;
-
                 if (mode == Mode.STATIC || !currentBulletInformation.HitsTarget(bulletSpawnPos, TargetType.LEVEL_DEFEAT))
-                {
                     Shoot();
-                }
             }
         }
 
-        private enum State
+        public enum State
         {
             TURNING_LEFT,
             TURNING_RIGHT,
-            NOT_TURNING
+            LOCKED_ON
         }
 
         private enum Mode

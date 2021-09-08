@@ -36,7 +36,7 @@ namespace TankBattlePremium
                     movement = -nextMovement;
 
                 rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation,
-                        Quaternion.LookRotation(movement, Vector3.up), rotSpeed * Time.deltaTime));
+                        Quaternion.LookRotation(movement, Vector3.up), rotSpeed * Time.fixedDeltaTime));
             }
         }
     }
