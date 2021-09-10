@@ -20,6 +20,10 @@ namespace TankBattlePremium
 
         [SerializeField] private Mode mode = Mode.TURNING;
         public State currState { get; private set; }
+        public float maxSwingAngle = 180;
+        [SerializeField] private Transform aimingTarget;
+        [HideInInspector] public Transform currentTarget;
+        [HideInInspector] public float currentTargetOffset;
 
         protected override void Awake()
         {
@@ -32,22 +36,24 @@ namespace TankBattlePremium
             nextRotCheckTime = Time.time;
             nextRaycastTime = Time.time + raycastCheckTime;
 
-            currState = Random.value > 0.5 ? State.TURNING_LEFT : State.TURNING_RIGHT;
+            if (mode == Mode.TURNING || mode == Mode.SWINGING)
+                currState = Random.value > 0.5 ? State.TURNING_LEFT : State.TURNING_RIGHT;
         }
 
         void Update()
         {
             if (mode == Mode.IDLE)
                 return;
-            if (mode == Mode.TURNING)
-                TestForPlayer();
-            if (mode == Mode.TURNING)
-                Rotate();
+            TestForPlayer();
+            Rotate();
             MaybeShoot();
         }
 
         void TestForPlayer()
         {
+            if (mode != Mode.TURNING && mode != Mode.SWINGING)
+                return;
+
             if (nextRaycastTime < Time.time)
             {
                 nextRaycastTime = Time.time + raycastCheckTime;
@@ -65,17 +71,40 @@ namespace TankBattlePremium
 
         void Rotate()
         {
-            if (nextRotCheckTime < Time.time)
+            if (mode == Mode.TURNING || mode == Mode.SWINGING)
             {
-                nextRotCheckTime = Time.time + minRotationTime;
-                if (currState != State.LOCKED_ON && Random.value > 0.7)
-                    currState = currState == State.TURNING_LEFT ? currState = State.TURNING_RIGHT : currState = State.TURNING_LEFT;
-            }
+                if (mode == Mode.TURNING && nextRotCheckTime < Time.time)
+                {
+                    nextRotCheckTime = Time.time + minRotationTime;
+                    if (currState != State.LOCKED_ON && Random.value > 0.7)
+                        currState = currState == State.TURNING_LEFT ? currState = State.TURNING_RIGHT : currState = State.TURNING_LEFT;
+                }
 
-            if (currState == State.TURNING_LEFT)
-                upperPart.transform.Rotate(Vector3.up * aimSpeed * Time.deltaTime);
-            else if (currState == State.TURNING_RIGHT)
-                upperPart.transform.Rotate(Vector3.up * aimSpeed * Time.deltaTime * -1);
+                if (currState == State.TURNING_LEFT)
+                    upperPart.transform.Rotate(Vector3.up * aimSpeed * Time.deltaTime);
+                else if (currState == State.TURNING_RIGHT)
+                    upperPart.transform.Rotate(Vector3.up * aimSpeed * Time.deltaTime * -1);
+
+                if (mode == Mode.SWINGING)
+                {
+                    if (currState == State.TURNING_LEFT && upperPart.transform.eulerAngles.y - 180 <= -maxSwingAngle)
+                        currState = State.TURNING_RIGHT;
+                    else if (currState == State.TURNING_RIGHT && upperPart.transform.eulerAngles.y - 180 >= maxSwingAngle)
+                        currState = State.TURNING_LEFT;
+                }
+            }
+            else if (mode == Mode.AIMING && aimingTarget != null)
+            {
+                Vector3 lookPos = aimingTarget.position;
+                if (currentTarget != null)
+                    lookPos = currentTarget.position;
+
+                lookPos = new Vector3(lookPos.x, upperPart.transform.position.y, lookPos.z);
+
+                Vector3 targetDir = lookPos - upperPart.transform.position;
+                targetDir.y = 0.0f;
+                upperPart.transform.rotation = Quaternion.RotateTowards(upperPart.transform.rotation, Quaternion.AngleAxis(currentTargetOffset, Vector3.up) * Quaternion.LookRotation(targetDir), aimSpeed * Time.deltaTime);
+            }
         }
 
         void MaybeShoot()
@@ -84,7 +113,7 @@ namespace TankBattlePremium
             {
                 nextBulletTime = Time.time + Random.Range(bulletCooldownRange.x, bulletCooldownRange.y);
 
-                if (mode == Mode.STATIC || !currentBulletInformation.HitsTarget(bulletSpawnPos, TargetType.LEVEL_DEFEAT))
+                if (mode == Mode.STATIC || mode == Mode.AIMING || !currentBulletInformation.HitsTarget(bulletSpawnPos, TargetType.LEVEL_DEFEAT))
                     Shoot();
             }
         }
@@ -100,7 +129,9 @@ namespace TankBattlePremium
         {
             TURNING,
             IDLE,
-            STATIC
+            STATIC,
+            SWINGING,
+            AIMING
         }
     }
 }

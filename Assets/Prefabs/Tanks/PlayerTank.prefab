@@ -308,7 +308,7 @@ MonoBehaviour:
   rayhitLayer:
     serializedVersion: 2
     m_Bits: 2048
-  bulletCooldown: 0.1
+  bulletCooldown: 0.3
   maxBullets: 5
 --- !u!82 &673093177699253503
 AudioSource:

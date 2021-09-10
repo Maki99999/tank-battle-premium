@@ -10,10 +10,10 @@ namespace TankBattlePremium
         [SerializeField] private float thickness = 0.3f;
         [SerializeField] private int bounces = 1;
 
-        public bool HitsTarget(Transform startPos, TargetType targetType)
+        public bool HitsTarget(Transform startPos, TargetType targetType, bool ignoreBounces = false)
         {
             RaycastHit hit;
-            return SphereCastTarget(startPos.position, thickness, startPos.forward, out hit, 999, GameController.Instance.collisionsLayerMask, bounces, targetType);
+            return SphereCastTarget(startPos.position, thickness, startPos.forward, out hit, 999, GameController.Instance.collisionsLayerMask, ignoreBounces ? 0 : bounces, targetType);
         }
 
         private bool SphereCastTarget(Vector3 origin, float radius, Vector3 direction, out RaycastHit hitInfo, float maxDistance, int layerMask, int bounces, TargetType targetType)
@@ -21,10 +21,10 @@ namespace TankBattlePremium
             if (Physics.SphereCast(origin, radius, direction, out hitInfo, maxDistance, layerMask))
             {
                 Debug.DrawRay(origin, hitInfo.point - origin, Color.green, 1.5f);
-                if (hitInfo.collider.gameObject.CompareTag(strTarget) && hitInfo.collider.gameObject.GetComponent<TargetController>().type == targetType)
+                if (hitInfo.collider.gameObject.CompareTag(strTarget))
                 {
                     Debug.DrawRay(origin, hitInfo.point - origin, Color.blue, 1.5f);
-                    return true;
+                    return hitInfo.collider.gameObject.GetComponent<TargetController>().type == targetType;
                 }
                 if (bounces > 0)
                 {

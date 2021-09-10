@@ -15,15 +15,60 @@ EditorBuildSettings:
     path: Assets/Scenes/TBPLevel002.unity
     guid: 3040b582cf7546844814b9767b2524a3
   - enabled: 1
-    path: Assets/Scenes/TBPLevel006.unity
-    guid: 9558b0b69b52f7e4c9ff86d7d4cead22
-  - enabled: 1
     path: Assets/Scenes/TBPLevel003.unity
     guid: 45eb734ee206e4643b91c0e6665f1b63
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel004.unity
+    guid: bcf87ef6421cadd4da4ba1d123851ff9
   - enabled: 1
     path: Assets/Scenes/TBPLevel005.unity
     guid: 7b3077d1f25bdff4398b0ce8aa687673
   - enabled: 1
+    path: Assets/Scenes/TBPLevel006.unity
+    guid: 9558b0b69b52f7e4c9ff86d7d4cead22
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel007.unity
+    guid: edf91c3a0718d1046b27a268a29fb4d8
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel008.unity
+    guid: a363157e1cca92c429a666798801cf88
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel009.unity
+    guid: 9b519c37a9d265547aa24e2721b284bf
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel010.unity
+    guid: 8b7f2e4d7c6dd1342aaf673b0ed5ca6e
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel011.unity
+    guid: dea3db6965e3786479b37e4e33b7deea
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel012.unity
+    guid: 3fa5c2107e240cd419bf2eb8f547ad69
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel013.unity
+    guid: ab3ebd01ae8527b4aa752613f0b8ac3b
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel014.unity
+    guid: 5ea1bd9b1ff265f4fb80f8bee7f79d98
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel015.unity
+    guid: 56d4d5a2c9f2b3c47b708892349cde81
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel016.unity
+    guid: a04e42ede4e1f864eae010cd0c3ba6b1
+  - enabled: 1
     path: Assets/Scenes/TBPLevel017.unity
     guid: d4f969eda089f8c4ab0251bc7ad82e2f
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel018.unity
+    guid: aa0ccc46dc1ba244b8e9aa93a0d082b4
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel019.unity
+    guid: ca95181f562118c4397a625cc4e375aa
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel020.unity
+    guid: f8d944124708fd04e80bb921dc30965c
+  - enabled: 1
+    path: Assets/Scenes/TBPLevel021.unity
+    guid: b72a7380b1a2ad44b80936d605a74a49
   m_configObjects: {}

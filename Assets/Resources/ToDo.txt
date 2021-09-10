@@ -1,2 +1,6 @@
-Cursor to shooty shoot cursor icon thingy
+allies to protect
 one-way-wall
+program icon
+even better monster ai with aimbot, dodging everything, aims perfectly at player with 1 bounce
+(no triple shot, calculates every fixedUpdate all bullet trajectories with bounces -> danger zones; 
+add boss radius to these danger bounds, then get nearest safe point)

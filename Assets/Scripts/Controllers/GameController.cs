@@ -7,6 +7,7 @@ namespace TankBattlePremium
 {
     public class GameController : MonoBehaviour
     {
+        public const int maxLevel = 21;
         const string levelProgressKey = "LevelProgress";
         const string levelPrefix = "TBPLevel";
 
@@ -35,7 +36,11 @@ namespace TankBattlePremium
         public void NextLevel(int currentLevel)
         {
             PlayerPrefs.SetInt(levelProgressKey, Mathf.Max(currentLevel, PlayerPrefs.GetInt(levelProgressKey, int.MinValue)));
-            StartCoroutine(LoadScene(levelPrefix + (currentLevel + 1).ToString("D3"), 3f));
+
+            if (currentLevel == maxLevel)
+                StartCoroutine(LoadScene("TBPMainMenu", 3f));
+            else
+                StartCoroutine(LoadScene(levelPrefix + (currentLevel + 1).ToString("D3"), 3f));
         }
 
         IEnumerator LoadScene(string name, float waitTimeBefore = 0f)
@@ -48,7 +53,7 @@ namespace TankBattlePremium
                 SceneManager.LoadScene(name);
             else
             {
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("TBPMainMenu");
                 Debug.LogError("Scene not found: " + name);
             }
         }

@@ -1,9 +1,9 @@
-A game by Maki99999 and Fish
-With noise from Manuel Schneekrieger
+A game by Maki99999
 
+With tiny help from Fish
+Some Ideas came from Sonowtakeo (At least I think he did something)
 
 <align="center"><b>Assets used</b></align>
 Voice Clips - WinterWalrus on OpenGameArt.org
 
-
-Made with Unity
+   <i>Made with Unity</i>

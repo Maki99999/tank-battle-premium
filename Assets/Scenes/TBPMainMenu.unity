@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 641b2ade335d35a4283266d78e5258ab, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1057,6 +1057,26 @@ PrefabInstance:
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 12800000, guid: f39279d8807f99a4686993be334e5ac0, type: 3}
+    - target: {fileID: 7388533934452974558, guid: b3a40573acb144347a4d0709fc371298, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388533934452974559, guid: b3a40573acb144347a4d0709fc371298, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388533934452974559, guid: b3a40573acb144347a4d0709fc371298, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388533934452974559, guid: b3a40573acb144347a4d0709fc371298, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388533934452974559, guid: b3a40573acb144347a4d0709fc371298, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7388533934580551800, guid: b3a40573acb144347a4d0709fc371298, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1303,6 +1323,10 @@ PrefabInstance:
       objectReference: {fileID: 12800000, guid: f39279d8807f99a4686993be334e5ac0, type: 3}
     - target: {fileID: 7388533935864837524, guid: b3a40573acb144347a4d0709fc371298, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388533935864837527, guid: b3a40573acb144347a4d0709fc371298, type: 3}
+      propertyPath: isMainMenu
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7388533935864837608, guid: b3a40573acb144347a4d0709fc371298, type: 3}

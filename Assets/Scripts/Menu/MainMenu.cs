@@ -8,7 +8,6 @@ namespace TankBattlePremium
 {
     public class MainMenu : MonoBehaviour
     {
-        const int levelCount = 59;
         const string levelProgressKey = "LevelProgress";
         const string levelPrefix = "TBPLevel";
 
@@ -92,7 +91,7 @@ namespace TankBattlePremium
             else
             {
                 Debug.LogError("Scene not found: " + name);
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("TBPMainMenu");
             }
         }
 
@@ -101,12 +100,12 @@ namespace TankBattlePremium
             Rect rect = levelButtonParent.GetComponent<RectTransform>().rect;
             float availableWidth = rect.width - 10 * 10;
 
-            int rows = Mathf.CeilToInt(levelCount / 10);
+            int rows = Mathf.CeilToInt(GameController.maxLevel / 10);
             float availableHeight = rect.height - rows * 10;
 
             gridLayout.cellSize = new Vector2(availableWidth / 10, Mathf.Clamp(availableHeight / rows, 10, 50));
 
-            for (int i = 1; i <= levelCount; i++)
+            for (int i = 1; i <= GameController.maxLevel; i++)
             {
                 GameObject newButton = Instantiate(levelButtonPrefab, Vector3.zero, Quaternion.identity, levelButtonParent);
                 newButton.transform.localRotation = Quaternion.identity;
@@ -115,7 +114,7 @@ namespace TankBattlePremium
                 {
                     newButton.GetComponent<Button>().interactable = false;
                 }
-                if (i == levelCount)
+                if (i == GameController.maxLevel)
                 {
                     newButton.GetComponent<Image>().color = new Color(1f, 0.5f, 0.5f);
                 }

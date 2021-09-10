@@ -18,6 +18,7 @@ namespace TankBattlePremium
         private const string strResW = "resW";
         private const string strResH = "resH";
 
+        public bool isMainMenu = false;
         public AudioMixer audioMixer;
         public GameObject MainMenu;
         public GameObject SettingsMenu;
@@ -51,7 +52,8 @@ namespace TankBattlePremium
         void Start()
         {
             InitDropdowns();
-            SetPrefValues();
+            if (isMainMenu)
+                SetPrefValues();
         }
 
         void Update()
@@ -113,7 +115,7 @@ namespace TankBattlePremium
 
         public void ToMainMenu()
         {
-            StartCoroutine(LoadScene("MainMenu"));
+            StartCoroutine(LoadScene("TBPMainMenu"));
         }
 
         IEnumerator LoadScene(string name)
