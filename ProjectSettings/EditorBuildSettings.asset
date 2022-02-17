@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TBPMainMenu.unity
     guid: 1408eb1a42bbd35459fd34a918942e0c
   - enabled: 1
+    path: Assets/Scenes/3DDeath.unity
+    guid: f1e39eb179432d8448e983694c4ab7a0
+  - enabled: 1
     path: Assets/Scenes/TBPLevel001.unity
     guid: c78d2e579ef7e3640ba8c65f5b671510
   - enabled: 1

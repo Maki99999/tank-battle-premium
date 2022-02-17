@@ -99,6 +99,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -596,6 +597,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -721,6 +723,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -967,6 +970,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -1079,6 +1083,10 @@ PrefabInstance:
       propertyPath: blurCamera
       value: 
       objectReference: {fileID: 1321932025472950401}
+    - target: {fileID: 6934816292216852029, guid: 1079efe502a841845b708f768d6f7490, type: 3}
+      propertyPath: blurVolume
+      value: 
+      objectReference: {fileID: 4954769108525364505}
     - target: {fileID: 6934816292216852029, guid: 1079efe502a841845b708f768d6f7490, type: 3}
       propertyPath: blurResWidth
       value: 1280

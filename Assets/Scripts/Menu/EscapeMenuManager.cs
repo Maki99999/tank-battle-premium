@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
 
 namespace TankBattlePremium
 {
@@ -27,6 +28,7 @@ namespace TankBattlePremium
         [Space(10)]
         public RawImage blurImage;
         public Camera blurCamera;
+        public Volume blurVolume;
         public int blurResWidth = 256;
 
         [Space(10)]
@@ -83,6 +85,7 @@ namespace TankBattlePremium
         public void CloseMenu()
         {
             blurCamera.enabled = false;
+            blurVolume.enabled = false;
 
             PauseManager.Unpause();
             animator.SetBool("EscIn", false);
@@ -93,6 +96,7 @@ namespace TankBattlePremium
         public void OpenMenu()
         {
             blurCamera.enabled = true;
+            blurVolume.enabled = true;
             UpdateBlurTexture();
 
             PauseManager.Pause();
