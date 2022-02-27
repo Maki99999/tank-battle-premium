@@ -21,6 +21,8 @@ namespace TankBattlePremium
             audioMixer.SetFloat("volBgm", -80);
             audioMixer.SetFloat("volSfx", 0);
             audioMixer.SetFloat("volMaster", 0);
+            Cursor.lockState = CursorLockMode.Locked;
+            Application.wantsToQuit += WantsToQuit;
 
             foreach (GameObject gameObject in gameObjectsToDisable)
                 gameObject.SetActive(false);
@@ -33,7 +35,6 @@ namespace TankBattlePremium
             StartCoroutine(GlitchMovementControl());
             StartCoroutine(GlitchVolumeControl());
             Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
 
             yield return new WaitForSecondsRealtime(2.5f);
             SceneManager.LoadScene("3DDeath");
@@ -65,6 +66,12 @@ namespace TankBattlePremium
                 cameraAnim.SetFloat("mult", smoothF * 2.5f);
                 yield return null;
             }
+        }
+
+        static bool WantsToQuit()
+        {
+            Debug.Log("Player prevented from quitting.");
+            return false;
         }
     }
 }
