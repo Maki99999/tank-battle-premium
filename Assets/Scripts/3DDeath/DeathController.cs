@@ -21,6 +21,9 @@ namespace TankBattlePremium
         public MonoBehaviour deathVolume;
         public Animator deathAnim;
 
+        private Vector3 xomPosition;
+        public Transform xom;
+
         public float darknessTime = 5f;
         private float timerStart = -1f;
         private bool timerActive = false;
@@ -51,17 +54,22 @@ namespace TankBattlePremium
                 {
                     timerActive = true;
                     timerStart = Time.time;
+                    xomPosition = playerController.transform.position + Random.onUnitSphere * 20f;
+                    xomPosition = new Vector3(xomPosition.x, xomPosition.y * Mathf.Sign(xomPosition.y), xomPosition.z);
                 }
                 else if (timerActive && Time.time > timerStart + darknessTime)
                 {
                     Death();
                 }
                 deathIsNearSfxVolume = (Time.time - timerStart) / darknessTime;
+                Debug.Log((Time.time - timerStart) / darknessTime);
+                xom.position = Vector3.Lerp(xomPosition, playerController.transform.position, (Time.time - timerStart) / darknessTime);
             }
             else
             {
                 timerActive = false;
                 deathIsNearSfxVolume = 0f;
+                xom.position = Vector3.Lerp(xom.position, playerController.transform.position - 10f * Vector3.up, Time.deltaTime);
             }
         }
 
