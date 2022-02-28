@@ -15,6 +15,7 @@ namespace TankBattlePremium
         public Animator cameraAnim;
         public AudioSource glitchErrNoiseLoop;
         public AudioSource loudNoise;
+        public PreventQuit preventQuit;
 
         private IEnumerator Start()
         {
@@ -22,7 +23,7 @@ namespace TankBattlePremium
             audioMixer.SetFloat("volSfx", 0);
             audioMixer.SetFloat("volMaster", 0);
             Cursor.lockState = CursorLockMode.Locked;
-            Application.wantsToQuit += WantsToQuit;
+            preventQuit.enabled = true;
 
             foreach (GameObject gameObject in gameObjectsToDisable)
                 gameObject.SetActive(false);
@@ -66,12 +67,6 @@ namespace TankBattlePremium
                 cameraAnim.SetFloat("mult", smoothF * 2.5f);
                 yield return null;
             }
-        }
-
-        static bool WantsToQuit()
-        {
-            Debug.Log("Player prevented from quitting.");
-            return false;
         }
     }
 }

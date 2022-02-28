@@ -119,7 +119,7 @@ namespace TankBattlePremium
             yield return new WaitForSeconds(0.5f);
             if (ItemsCheck())
             {
-                Application.Quit();
+                PreventQuit.Quit();
                 Debug.Log("Game Quit");
             }
             else

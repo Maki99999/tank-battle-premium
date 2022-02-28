@@ -5,7 +5,9 @@ using System.Runtime.InteropServices;
 
 public class PreventQuit : MonoBehaviour
 {
+    private static bool eventAttached = false;
     private IntPtr unityWindow;
+    private static bool isAllowedToQuit = false;
 
     [DllImport("user32.dll")]
     static extern IntPtr GetActiveWindow();
@@ -23,6 +25,12 @@ public class PreventQuit : MonoBehaviour
     private void Start()
     {
         unityWindow = GetActiveWindow();
+
+        if (!eventAttached)
+        {
+            eventAttached = true;
+            Application.wantsToQuit += PreventQuit.WantsToQuit;
+        }
     }
 
     private void Update()
@@ -31,18 +39,19 @@ public class PreventQuit : MonoBehaviour
             RefocusWindow();
     }
 
-    static bool WantsToQuit()
+    private static bool WantsToQuit()
     {
-        return false;
+        return isAllowedToQuit;
     }
 
-    [RuntimeInitializeOnLoadMethod]
-    static void RunOnStart()
+    public static void Quit()
     {
-        Application.wantsToQuit += WantsToQuit;
+        isAllowedToQuit = true;
+        Application.wantsToQuit -= PreventQuit.WantsToQuit;
+        Application.Quit();
     }
 
-    void OnApplicationFocus(bool hasFocus)
+    private void OnApplicationFocus(bool hasFocus)
     {
         if (!hasFocus)
         {

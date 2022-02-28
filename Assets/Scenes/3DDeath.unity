@@ -2844,6 +2844,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2073629159}
     m_Modifications:
+    - target: {fileID: 6305598104325983424, guid: 6f08fd995070a8742a6d5bdd010c81e1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6305598104325983429, guid: 6f08fd995070a8742a6d5bdd010c81e1, type: 3}
       propertyPath: ui
       value: 
@@ -8483,6 +8487,7 @@ GameObject:
   - component: {fileID: 1384142492}
   - component: {fileID: 1384142493}
   - component: {fileID: 1384142494}
+  - component: {fileID: 1384142495}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: GameController
@@ -8728,6 +8733,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1384142495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384142489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd0917fa3824a8f4cbe60ee8cc67960c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 9ae2d36ecbe779347a048416bf7833a7, type: 2}
 --- !u!1001 &1385778547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9125,12 +9143,12 @@ AudioSource:
   m_GameObject: {fileID: 1500999368}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -367839178435628862, guid: 9ae2d36ecbe779347a048416bf7833a7, type: 2}
+  OutputAudioMixerGroup: {fileID: -3163373007265571636, guid: 9ae2d36ecbe779347a048416bf7833a7, type: 2}
   m_audioClip: {fileID: 8300000, guid: 89e36686409aaca4f90f1c43dc046891, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
