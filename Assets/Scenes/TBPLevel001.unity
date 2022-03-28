@@ -793,6 +793,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1141131830}
+    - target: {fileID: 1321932025419350990, guid: 20e114c556b690c4588b278974c18a48, type: 3}
+      propertyPath: orthographic size
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321932025472950401, guid: 20e114c556b690c4588b278974c18a48, type: 3}
+      propertyPath: orthographic size
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321932025763984192, guid: 20e114c556b690c4588b278974c18a48, type: 3}
+      propertyPath: orthographic size
+      value: 38
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20e114c556b690c4588b278974c18a48, type: 3}
 --- !u!108 &1321932024811054406 stripped
